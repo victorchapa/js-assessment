@@ -35,18 +35,22 @@ define(function() {
     },
 
     callIt : function(fn) {
-      var totalarguments = arguments.length-1;
-      switch (totalarguments){
-        case 2:
-          return fn(arguments[1],arguments[2]);
-        case 3:
-          return fn(arguments[1],arguments[2],arguments[3]);
+      var totalarguments = arguments.length-1,
+          saveargu = [];
+      if (totalarguments<0){
+        return null;
+      }else{
+        for(var x=1; x<=totalarguments; x++){
+          saveargu.push(arguments[x]);
+        }
+        return (fn.apply(null, saveargu));
       }
-
     },
 
     curryIt : function(fn) {
-
+      console.log(fn);
+      var totalarguments = arguments.length-1;
+      console.log(totalarguments);
     },
 
     makeClosures : function(arr, fn) {
