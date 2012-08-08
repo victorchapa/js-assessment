@@ -16,7 +16,7 @@ define([
     });
 
     it("you should be able to change the context in which a function is called", function() {
-      var speak = function() {
+      var speak = function(test) {
             return sayIt(this.greeting, this.name, '!!!');
           },
           obj = {
@@ -48,6 +48,7 @@ define([
           c = Math.random(),
           d = Math.random();
 
+      expect(answers.useArguments()).to.be(null);
       expect(answers.useArguments(a)).to.be(a);
       expect(answers.useArguments(a, b)).to.be(a + b);
       expect(answers.useArguments(a, b, c)).to.be(a + b + c);
